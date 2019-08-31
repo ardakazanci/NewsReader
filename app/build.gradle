@@ -45,7 +45,12 @@ dependencies {
     // Cache
     implementation 'io.paperdb:paperdb:2.6'
 
-
+    // Diagonal Layout
+    implementation 'com.github.florent37:diagonallayout:1.0.9'
+    // KenburnsView
+    implementation 'com.flaviofaria:kenburnsview:1.0.7'
+    // Android-Ago library
+    implementation 'com.github.curioustechizen.android-ago:library:1.4.0'
 
 
 }

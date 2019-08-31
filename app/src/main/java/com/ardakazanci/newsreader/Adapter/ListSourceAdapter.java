@@ -2,6 +2,7 @@ package com.ardakazanci.newsreader.Adapter;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ardakazanci.newsreader.Common.Common;
 import com.ardakazanci.newsreader.Interface.Favicon.IconBetterIdeaService;
 import com.ardakazanci.newsreader.Interface.IItemClickListener;
+import com.ardakazanci.newsreader.ListNewsActivity;
 import com.ardakazanci.newsreader.Model.Favicon.IconBetterIdea;
 import com.ardakazanci.newsreader.Model.WebSite;
 import com.ardakazanci.newsreader.R;
@@ -77,8 +79,10 @@ public class ListSourceAdapter extends RecyclerView.Adapter<ListSourceViewHolder
         holder.setiItemClickListener(new IItemClickListener() {
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
-                //
-                Log.e("Tıklandı",""+position);
+                Intent intent = new Intent(context, ListNewsActivity.class);
+                intent.putExtra("source", webSite.getSources().get(position).getId());
+                intent.putExtra("sortBy", webSite.getSources().get(position).getSortBysAvailable().get(0));
+                context.startActivity(intent);
             }
         });
 
@@ -105,6 +109,9 @@ class ListSourceViewHolder extends RecyclerView.ViewHolder implements View.OnCli
         super(itemView);
         source_image = itemView.findViewById(R.id.source_image);
         source_title = itemView.findViewById(R.id.source_name);
+
+        itemView.setOnClickListener(this);
+
     }
 
     // Adapter'den bu başlatılıyor.
